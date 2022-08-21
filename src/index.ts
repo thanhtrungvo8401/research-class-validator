@@ -9,14 +9,21 @@ const params = {
   emailAddress: "invalidemail",
   url: "http://test.com",
   // Causing the required error
-  password: ""
+  password: "1"
 };
 
-const exampleSite = new Site(params);
+const exampleSite = new Site();
+exampleSite.name = params.name;
+exampleSite.emailAddress = params.emailAddress;
+exampleSite.url = params.url;
+exampleSite.password = params.password;
 
 validate(exampleSite).then(errors => {
     if (errors.length > 0) {
-        console.log("validation failed. errors: ", errors);
+        console.log("validation failed. errors: ", errors.map((e: any) => ({
+        prop: e.property,
+        breaks: e.constraints
+        })));
     } else {
         console.log("validation succeed");
     }
