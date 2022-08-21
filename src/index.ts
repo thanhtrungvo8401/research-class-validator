@@ -13,10 +13,11 @@ const params = {
 };
 
 const exampleSite = new Site();
-exampleSite.name = params.name;
+exampleSite.name = 'params.name';
 exampleSite.emailAddress = params.emailAddress;
 exampleSite.url = params.url;
 exampleSite.password = params.password;
+exampleSite.minName = 40
 
 validate(exampleSite).then(errors => {
     if (errors.length > 0) {

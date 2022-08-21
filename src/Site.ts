@@ -1,4 +1,5 @@
 import { IsEmail, IsNotEmpty, IsUrl, MaxLength } from "class-validator";
+import { IsLongerThan } from "./custom-decorator";
 
 interface ISite {
   name: string;
@@ -11,9 +12,7 @@ export default class Site implements ISite {
   @IsNotEmpty({
     message: "Name is required.",
   })
-  @MaxLength(100, {
-    message: "Name must be shorter than or equal to $constraint1 characters.",
-  })
+  @IsLongerThan('minName', { message: "Name must greater than minName" })
   public name: string;
 
   @IsNotEmpty({
@@ -48,17 +47,6 @@ export default class Site implements ISite {
   })
   public password: string;
 
-  // constructor(
-  //   site: ISite = {
-  //     name: "",
-  //     password: "",
-  //     url: "",
-  //     emailAddress: ""
-  //   }
-  // ) {
-  //   this.name = site.name;
-  //   this.url = site.url;
-  //   this.emailAddress = site.emailAddress;
-  //   this.password = site.password;
-  // }
+  @IsNotEmpty({ message: "text must not be empty" })
+  minName: number;
 }
