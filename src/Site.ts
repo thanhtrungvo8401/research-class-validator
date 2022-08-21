@@ -14,7 +14,7 @@ export default class Site implements ISite {
   @MaxLength(100, {
     message: "Name must be shorter than or equal to $constraint1 characters.",
   })
-  public name!: string;
+  public name: string;
 
   @IsNotEmpty({
     message: "Url is required.",
@@ -25,7 +25,7 @@ export default class Site implements ISite {
   @MaxLength(1000, {
     message: "Url must be shorter than or equal to $constraint1 characters.",
   })
-  public url!: string;
+  public url: string;
 
   @IsNotEmpty({
     message: "Email address is required.",
@@ -37,7 +37,7 @@ export default class Site implements ISite {
     message:
       "Email address must be shorter than or equal to $constraint1 characters.",
   })
-  public emailAddress!: string;
+  public emailAddress: string;
 
   @IsNotEmpty({
     message: "Password is required.",
@@ -46,7 +46,7 @@ export default class Site implements ISite {
     message:
       "Password must be shorter than or equal to $constraint1 characters.",
   })
-  public password!: string;
+  public password: string;
 
   // constructor(
   //   site: ISite = {
